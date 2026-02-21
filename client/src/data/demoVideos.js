@@ -55,7 +55,7 @@ export const demoVideos = [
         _id: 'demo-5',
         title: 'For Bigger Blazes',
         description: 'High-energy action clip featuring fire and fast movement to test encoding quality.',
-        url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
         status: 'completed',
         sensitivity: 'safe',
         category: 'Action',

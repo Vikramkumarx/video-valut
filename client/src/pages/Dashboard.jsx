@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchVideos();
-    const socket = io();
+    const socket = io('https://video-valut.onrender.com');
 
     socket.on('videoStatus', ({ id, status, progress, sensitivity }) => {
       setVideos(prev => prev.map(v => {

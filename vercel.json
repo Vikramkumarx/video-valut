@@ -2,5 +2,31 @@
     "framework": "vite",
     "buildCommand": "cd client && npm install && npm run build",
     "outputDirectory": "client/dist",
-    "installCommand": "cd client && npm install"
+    "installCommand": "cd client && npm install",
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "https://video-valut.onrender.com/api/$1"
+        },
+        {
+            "source": "/uploads/(.*)",
+            "destination": "https://video-valut.onrender.com/uploads/$1"
+        },
+        {
+            "source": "/processed/(.*)",
+            "destination": "https://video-valut.onrender.com/processed/$1"
+        },
+        {
+            "source": "/thumbnails/(.*)",
+            "destination": "https://video-valut.onrender.com/thumbnails/$1"
+        },
+        {
+            "source": "/socket.io/(.*)",
+            "destination": "https://video-valut.onrender.com/socket.io/$1"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
 }

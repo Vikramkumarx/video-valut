@@ -4,7 +4,8 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 // Centralized API Configuration
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || '';
+// Using relative paths to leverage Vercel/Vite proxying
+axios.defaults.baseURL = '';
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);

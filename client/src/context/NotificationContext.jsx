@@ -35,6 +35,7 @@ export const NotificationProvider = ({ children }) => {
                             <div className="toast-icon">
                                 {n.type === 'success' && <CheckCircle size={20} />}
                                 {n.type === 'error' && <AlertCircle size={20} />}
+                                {n.type === 'warning' && <AlertCircle size={20} />}
                                 {n.type === 'info' && <Info size={20} />}
                             </div>
                             <span className="toast-message">{n.message}</span>
@@ -75,11 +76,13 @@ export const NotificationProvider = ({ children }) => {
                 }
                 .toast.success { border-left: 4px solid var(--success); }
                 .toast.error { border-left: 4px solid var(--error); }
+                .toast.warning { border-left: 4px solid var(--warning); }
                 .toast.info { border-left: 4px solid var(--primary); }
                 
                 .toast-icon { display: flex; align-items: center; }
                 .success .toast-icon { color: var(--success); }
                 .error .toast-icon { color: var(--error); }
+                .warning .toast-icon { color: var(--warning); }
                 .info .toast-icon { color: var(--primary); }
                 
                 .toast-message { font-size: 0.9rem; font-weight: 500; flex-grow: 1; }

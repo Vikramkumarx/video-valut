@@ -2,6 +2,11 @@
 
 StreamVault is a comprehensive full-stack application for industrial video management. It enables secure uploads, automated sensitivity analysis, and seamless streaming with real-time processing updates.
 
+## 🌐 Live Deployment
+
+- **Frontend (UI)**: [https://video-valut.vercel.app](https://video-valut.vercel.app)
+- **Backend (API)**: [https://video-valut.onrender.com](https://video-valut.onrender.com)
+
 ## 🚀 Quick Start
 
 ### Prerequisites

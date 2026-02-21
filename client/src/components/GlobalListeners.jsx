@@ -8,13 +8,15 @@ export default function GlobalListeners({ user }) {
     useEffect(() => {
         if (!user) return;
 
-        const socket = io();
+        // Connect to the Render backend directly for WebSockets (Vercel proxy has limitations with WS)
+        const socket = io('https://video-valut.onrender.com');
 
         socket.on('videoStatus', ({ title, status, sensitivity }) => {
             if (status === 'completed') {
-                const type = sensitivity === 'flagged' ? 'success' : 'success';
-                const prefix = sensitivity === 'flagged' ? '⚠️ ' : '✅ ';
-                addNotification(`${prefix} Video "${title}" is ready. Status: ${sensitivity}`, 'success');
+                const isFlagged = sensitivity === 'flagged';
+                const type = isFlagged ? 'warning' : 'success';
+                const prefix = isFlagged ? '🔒 [ALERT] ' : '🔓 [SECURE] ';
+                addNotification(`${prefix} Asset "${title}" analysis complete. Classification: ${sensitivity.toUpperCase()}`, type);
             } else if (status === 'processing') {
                 // addNotification(`🎥 Processing started for "${title}"`, 'info');
             }
