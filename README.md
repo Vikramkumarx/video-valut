@@ -1,81 +1,64 @@
 # StreamVault | Secure Video Management & Streaming
 
-StreamVault is a comprehensive full-stack application for industrial video management. It enables secure uploads, automated sensitivity analysis, and seamless streaming with real-time processing updates.
+StreamVault is a premium, industrial-grade full-stack application for secure video management. It features automated sensitivity analysis, real-time processing updates via WebSockets, and seamless streaming with HTTP range requests.
 
 ## 🌐 Live Deployment
 
-- **Frontend (UI)**: [https://video-valut.vercel.app](https://video-valut.vercel.app)
-- **Backend (API)**: [https://video-valut.onrender.com](https://video-valut.onrender.com)
+- **Frontend (Production)**: [https://video-valut.vercel.app](https://video-valut.vercel.app)
+- **Backend (API Service)**: [https://video-valut.onrender.com](https://video-valut.onrender.com)
 
-## 🚀 Quick Start
+## 🛠 Tech Stack
+
+- **Frontend**: React 19, Vite, Framer Motion (Animations), Lucide React (Icons), Socket.io-client.
+- **Backend**: Node.js, Express, MongoDB (Atlas), Socket.io, Multer, FFmpeg (Video Processing).
+- **Deployment**: Vercel (Frontend), Render (Backend).
+
+## 🚀 Installation & Setup
 
 ### Prerequisites
-- Node.js (Latest LTS)
-- MongoDB (Running locally or on Atlas)
-- FFmpeg (Optional, falls back to mock processing if not found)
+- **Node.js**: v18.x or higher
+- **MongoDB**: A local instance or a MongoDB Atlas connection string
+- **FFmpeg**: Required for server-side video transcoding (optional for demo mode)
 
-### Setup Instructions
+### 1. Backend Configuration
+```bash
+cd server
+npm install
+```
+Create a `.env` file in the `server` directory:
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_random_secret
+CORS_ORIGIN=https://video-valut.vercel.app
+```
 
-1. **Clone and Install Backend**
-   ```bash
-   cd server
-   npm install
-   ```
+### 2. Frontend Configuration
+```bash
+cd client
+npm install
+```
+The frontend is configured to proxy API requests in production. For local development, ensure the backend is running on port 5000.
 
-2. **Configure Environment**
-   Create a `.env` file in the `server` directory (one is already provided in the scratch folder):
-   ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/video-stream-app
-   JWT_SECRET=your_jwt_secret
-   ```
+### 3. Running Locally
+**Start Backend:**
+```bash
+cd server
+npm start
+```
+**Start Frontend:**
+```bash
+cd client
+npm run dev
+```
 
-3. **Install Frontend**
-   ```bash
-   cd client
-   npm install
-   ```
+## 🎥 Core Features
 
-4. **Running the Application**
-   - Start Backend: `cd server && node index.js`
-   - Start Frontend: `cd client && npm run dev`
-
-## 🛠 Features
-
-### 1. Robust Video Upload & Processing
-- **Multer-powered Uploads**: Supports MP4, MKV, and AVI.
-- **FFmpeg Pipeline**: Automated processing for web-optimization.
-- **Mock Fallback**: Graceful degradation if FFmpeg is unavailable.
-
-### 2. Multi-Tenant Architecture
-- **Organization Isolation**: Data is segregated by organization ID.
-- **User Isolation**: Standard users only see their own content.
-
-### 3. Role-Based Access Control (RBAC)
-- **Viewer**: Read-only access to assigned videos.
-- **Editor**: Can upload and manage videos within their organization.
-- **Admin**: Full system control.
-
-### 4. Real-Time Tracking
-- **Socket.io Integration**: Live progress bars for uploads and background processing steps.
-- **Status Indicators**: Instant UI updates for 'Processing', 'Safe', or 'Flagged' status.
-
-### 5. Premium Streaming
-- **HTTP Range Requests**: Supports seeking and efficient bandwidth usage.
-- **Glassmorphism UI**: High-end aesthetic with responsive layouts.
-
-## 📖 API Documentation Summary
-
-- `POST /api/auth/register`: User registration with RBAC roles.
-- `POST /api/auth/login`: Identity verification and JWT issuance.
-- `GET /api/videos`: Multi-tenant filtered video library.
-- `POST /api/videos/upload`: Multipart video upload (Editors/Admins).
-- `GET /api/videos/stream/:id`: Range-request based video streaming.
-
-## 💡 Assumptions & Design Decisions
-- **Local Storage**: For this demo, videos are stored in the `server/uploads` and `server/processed` folders.
-- **Sensitivity Threshold**: A 20% random flag rate is simulated to demonstrate the 'Flagged' vs 'Safe' UI states.
-- **Tech Stack**: React + Vite for speed, Express for modularity, and MongoDB for flexible video metadata.
+1. **Secure Ingestion**: Multipart uploads with size validation and organization-based isolation.
+2. **Real-Time Analysis**: Background video processing with live status updates via WebSockets.
+3. **Sensitivity Guard**: Automated scanning (mocked) to flag assets as 'Safe' or 'Flagged'.
+4. **Range-Request Streaming**: Efficient bandwidth usage and high-performance seeking.
+5. **RBAC Security**: Role-based access (Viewer, Editor, Admin) ensuring total data segregation.
 
 ---
 Developed for the Full-Stack Engineering Assignment.
