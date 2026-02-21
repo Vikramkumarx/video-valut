@@ -7,6 +7,10 @@ StreamVault is a premium, industrial-grade full-stack application for secure vid
 - **Frontend (Production)**: [https://video-valut.vercel.app](https://video-valut.vercel.app)
 - **Backend (API Service)**: [https://video-valut.onrender.com](https://video-valut.onrender.com)
 
+## 📸 Screenshots
+
+![StreamVault Registration](docs/images/preview.png)
+
 ## 🛠 Tech Stack
 
 - **Frontend**: React 19, Vite, Framer Motion (Animations), Lucide React (Icons), Socket.io-client.
