@@ -106,6 +106,7 @@ export default function Player() {
                                 autoPlay
                                 muted
                                 src={videoSrc}
+                                crossOrigin="anonymous"
                                 className="main-video"
                                 onError={() => setVideoError(true)}
                             >
@@ -165,7 +166,7 @@ export default function Player() {
                     <div className="related-list">
                         {relatedVideos.map(rv => (
                             <Link key={rv._id} to={`/video/${rv._id}`} className="related-item glass glass-hover">
-                                <div className="related-thumb">
+                                <div className="related-thumb" style={rv.thumbnail ? { backgroundImage: `url(${rv.thumbnail})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}>
                                     <div className="thumb-play"><Play size={20} fill="white" /></div>
                                     {rv.isDemo && <span className="demo-label">Demo</span>}
                                 </div>
